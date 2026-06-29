@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  metatrader-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: metatrader-mcp-server:latest
+    container_name: metatrader-mcp
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      LOGIN: ${MT5_LOGIN}
+      PASSWORD: ${MT5_PASSWORD}
+      SERVER: ${MT5_SERVER}
+    command: >
+      metatrader-http-server
+      --login ${MT5_LOGIN}
+      --password ${MT5_PASSWORD}
+      --server ${MT5_SERVER}
+      --host 0.0.0.0
+      --port 8000

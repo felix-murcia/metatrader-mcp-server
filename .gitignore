@@ -1,0 +1,6 @@
+.env
+venv_mt5/
+__pycache__/
+*.pyc
+*.log
+.claude/
